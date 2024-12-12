@@ -1,0 +1,80 @@
+site_name: Pairrogrammer
+site_url: https://github.com/soham901/pairrogrammer
+site_description: A mobile app for CS students and project builders to find collaborators using AI-powered matchmaking and gamification.
+site_author: Soham Sagathiya
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: orange
+      accent: amber
+      toggle:
+        icon: material/lightbulb
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: orange
+      accent: amber
+      toggle:
+        icon: material/lightbulb-outline
+        name: Switch to light mode
+  font:
+    text: Fira Sans
+    code: Fira Code
+
+nav:
+  - Home: index.md
+  - Features: features.md
+  # - Features:
+  #     - "Skill-Based Matchmaking": features/skill_based_matchmaking.md
+  #     - "Project Collaboration": features/project_collaboration.md
+  #     - "Gamification": features/gamification.md
+  #     - "AI Recommendations": features/ai_recommendations.md
+  # - Getting Started:
+  #     - Installation: getting_started/installation.md
+  #     - Setup: getting_started/setup.md
+  #     - Development: getting_started/development.md
+  # - Tech Stack:
+  #     - Backend: tech_stack/backend.md
+  #     - Mobile App: tech_stack/mobile_app.md
+  #     - AI Models: tech_stack/ai_models.md
+  # - Contributing: contributing.md
+  - Tech Stack: tech_stack.md
+  - Team: team.md
+  - Contributing: contributing.md
+  - License: license.md
+
+extra_css:
+  - css/custom.css
+extra_javascript:
+  - js/custom.js
+
+markdown_extensions:
+  - toc:
+      permalink: true
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - fenced_code
+
+plugins:
+  - search
+  # - git-revision-date-localized
+
+# Site navigation options
+page_order:
+  - index.md
+  - features.md
+  # - getting_started/
+  - tech_stack.md
+  - contributing.md
+  - license.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/soham901/pairrogrammer
+    # - icon: fontawesome/solid/globe
+    #   link: https://tiangolo.com
