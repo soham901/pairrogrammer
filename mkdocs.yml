@@ -27,22 +27,7 @@ theme:
 nav:
   - Home: index.md
   - Features: features.md
-  # - Features:
-  #     - "Skill-Based Matchmaking": features/skill_based_matchmaking.md
-  #     - "Project Collaboration": features/project_collaboration.md
-  #     - "Gamification": features/gamification.md
-  #     - "AI Recommendations": features/ai_recommendations.md
-  # - Getting Started:
-  #     - Installation: getting_started/installation.md
-  #     - Setup: getting_started/setup.md
-  #     - Development: getting_started/development.md
-  # - Tech Stack:
-  #     - Backend: tech_stack/backend.md
-  #     - Mobile App: tech_stack/mobile_app.md
-  #     - AI Models: tech_stack/ai_models.md
-  # - Contributing: contributing.md
   - Tech Stack: tech_stack.md
-  - Team: team.md
   - Contributing: contributing.md
   - License: license.md
 
@@ -63,11 +48,9 @@ plugins:
   - search
   - git-revision-date-localized
 
-# Site navigation options
 page_order:
   - index.md
   - features.md
-  # - getting_started/
   - tech_stack.md
   - contributing.md
   - license.md
@@ -76,5 +59,5 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/soham901/pairrogrammer
-    # - icon: fontawesome/solid/globe
-    #   link: https://tiangolo.com
+    - icon: fontawesome/brands/twitter
+      link: https://x.com/soham901x

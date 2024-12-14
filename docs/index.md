@@ -31,18 +31,6 @@ For a complete breakdown of the tech stack, visit [Tech Stack](tech_stack.md).
 
 ---
 
-## Team
-
-Meet the talented team behind Pairrogrammer:
-
-- **Model Monk**: The AI and machine learning expert, responsible for the matching algorithm and skill recommendations.
-- **Pixel Pirate**: The UI/UX designer, crafting a modern and fun user interface.
-- **Stack Sultan**: The backend and DevOps wizard, managing the APIs, databases, and deployment pipeline.
-
-Read more about the team in [Team](team.md).
-
----
-
 ## Contributing
 
 We welcome contributions from developers, designers, and enthusiasts who want to help improve Pairrogrammer. Whether you want to fix bugs, add new features, or improve documentation, we would love your help!
