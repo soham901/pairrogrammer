@@ -1,4 +1,4 @@
-# Pairrogrammer: Collaborator Matching App for CS Students
+# Pairrogrammer: Tinder but for project collaboration
 
 Welcome to the **Pairrogrammer** repository! This project is designed to help computer science students find the perfect collaborators for their projects based on shared skills, interests, and goals. With AI-powered recommendations, skill-based matchmaking, and gamification, **Pairrogrammer** aims to enhance collaboration within the CS community.
 
