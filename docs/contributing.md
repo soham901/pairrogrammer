@@ -17,8 +17,8 @@ Start by forking the Pairrogrammer repository to your own GitHub account:
 Clone your forked repository to your local machine:
 
 ```bash
-git clone https://github.com/your-username/Pairrogrammer.git
-cd Pairrogrammer
+git clone https://github.com/soham901/pairrogrammer.git
+cd pairogrammer
 ```
 
 ### 3. **Make Changes**
