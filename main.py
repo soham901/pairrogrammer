@@ -25,13 +25,17 @@ def recommend(user_id: int, n: int = 5):
     """
     Recommend `n` items to the given user.
     """
-    all_items = interactions['item_id'].unique()
+    unique_users = interactions['user_id'].unique()
+    unique_items = interactions['item_id'].unique()
 
+    if user_id not in unique_users:
+        return {"error": f"User {user_id} not found in the dataset."}
+    
     known_items = interactions[interactions['user_id'] == user_id]['item_id'].tolist()
 
     recommendations = []
     
-    for item in all_items:
+    for item in unique_items:
         if item not in known_items:
             predicted_rating = model.predict(user_id, item).est
             recommendations.append((int(item), float(predicted_rating)))
