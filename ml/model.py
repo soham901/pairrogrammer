@@ -3,7 +3,7 @@ from surprise.model_selection import train_test_split
 import pandas as pd
 from datetime import datetime as dt
 
-from ..data.interactions import interactions
+interactions = pd.read_csv("interactions.csv")
 
 # Load the data into Surprise's Dataset
 reader = Reader(rating_scale=(0, 1))

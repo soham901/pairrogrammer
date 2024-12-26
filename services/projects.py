@@ -15,6 +15,7 @@ class ProjectService:
             .join(Interaction, and_(Project.pid == Interaction.pro_id, Interaction.user_id == user_id), isouter=True)
             .where(Interaction.id.is_(None))
         )
+
         projects = self.session.exec(statement).all()
         return projects
     

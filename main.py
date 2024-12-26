@@ -1,20 +1,28 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
 from sqlmodel import create_engine, SQLModel, Session
+from fastapi.middleware.cors import CORSMiddleware
 
-# from .data.projects import projects
-# from .data.users import users
-# from .data.interactions import interactions_data
-# from .ml.model import model, interactions
 from .services.interactions import InteractionService, Interaction
 from .services.projects import ProjectService, Project
 
-app = FastAPI()
+app = FastAPI(
+    title="Pairrogrammer API",
+    description="API for Pairrogrammer",
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["POST", "GET", "PATCH", "PUT", "DELETE"],
+    allow_headers=["*"],
+)
+
 
 @app.get("/")
 def home():
     # return {"message": "Welcome to the Pairrogrammer API"}
-    # return index.html
     with open("index.html") as f:
         html_content = f.read()
         return HTMLResponse(content=html_content, status_code=200)
@@ -56,7 +64,7 @@ def add_project(project: Project):
 
 
 # take the left or right swipe and add the interaction
-@app.get("/projects/{project_id}/swipe")
+@app.post("/projects/{project_id}/swipe")
 def swipe_project(project_id: int, user_id: int, swipe: str):
     with Session(engine) as session:
         project_service = ProjectService(session)
@@ -64,11 +72,12 @@ def swipe_project(project_id: int, user_id: int, swipe: str):
 
 
 # list out the right swiped projects
-@app.get("/projects/{user_id}/intrested")
+@app.get("/intrested-projects/{user_id}")
 def get_matches(user_id: int):
     with Session(engine) as session:
         project_service = ProjectService(session)
         return project_service.get_matches(user_id)
+
 
 
 # @app.get("/projects/{project_id}")

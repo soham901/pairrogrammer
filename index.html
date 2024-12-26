@@ -1,112 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-        * {
-            font-family: system-ui;
-            margin: 0;
-            padding: 0;
-        }
+      * {
+        font-family: system-ui;
+        margin: 0;
+        padding: 0;
+      }
 
-        body {
-            /* dark mode */
-            background-color: #333;
-            color: #fff;
-            padding: 4rem;
-        }
+      body {
+        /* dark mode */
+        background-color: #333;
+        color: #fff;
+        padding: 4rem;
+      }
 
-        #projects {
-            margin-top: 2rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-        }
+      #projects {
+        margin-top: 2rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+      }
 
-        .project {
-            margin-bottom: 20px;
-            padding: 1rem;
-            border: 1px solid #ccc;
-            border-radius: .5rem;
-        }
+      .project {
+        margin-bottom: 20px;
+        padding: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 0.5rem;
+      }
 
-        .actions {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 1rem;
-            gap: 1rem;
-        }
+      .actions {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1rem;
+        gap: 1rem;
+      }
 
-        .actions button {
-            padding: .5rem 1rem;
-            border: none;
-            border-radius: .5rem;
-            background-color: #007bff;
-            color: #fff;
-            cursor: pointer;
-            width: 100%;
-        }
+      .actions button {
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 0.5rem;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+        width: 100%;
+      }
 
-        .actions button:first-child {
-            background-color: #dc3545;
-        }
+      .actions button:first-child {
+        background-color: #dc3545;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Projects</h1>
     <div id="projects"></div>
 
     <script>
-        const userId = document.URL.split('?user_id=')[1] || 1;
-        
+      const userId = document.URL.split("?user_id=")[1] || 5;
 
-        const getProjects = async () => {
-            const response = await fetch(`/projects?user_id=${userId}`);
-            const projects = await response.json();
-            return projects;
+      const getProjects = async () => {
+        const response = await fetch(`/projects?user_id=${userId}`);
+        const projects = await response.json();
+        return projects;
+      };
+
+      const leftSwipe = async (id) => {
+        const response = await fetch(
+          `/projects/${id}/swipe?swipe=left&user_id=${userId}`
+        );
+
+        if (response.ok) {
+          render();
+        }
+      };
+
+      const rightSwipe = async (id) => {
+        const response = await fetch(
+          `/projects/${id}/swipe?swipe=right&user_id=${userId}`
+        );
+
+        if (response.ok) {
+          render();
+        }
+      };
+
+      const render = async () => {
+        const data = await getProjects();
+        const projects = document.getElementById("projects");
+
+        if (data.length === 0) {
+          projects.innerHTML = `<p>No projects found for you</p>`;
+          return;
         }
 
-        const leftSwipe = async (id) => {
-            const response = await fetch(`/projects/${id}/swipe?swipe=left&user_id=${userId}`)
-
-            if (response.ok) {
-                render();
-            }
-        }
-
-        const rightSwipe = async (id) => {
-            const response = await fetch(`/projects/${id}/swipe?swipe=right&user_id=${userId}`)
-
-            if (response.ok) {
-                render();
-            }
-        }
-        
-
-        const render = async () => {
-            const data = await getProjects();
-            const projects = document.getElementById('projects');
-
-            if(data.length === 0) {
-                projects.innerHTML = `<p>No projects found for you</p>`;
-                return;   
-            }
-
-            projects.innerHTML = data.map(project => {
-                return `<div class="project">
+        projects.innerHTML = data
+          .map((project) => {
+            return `<div class="project">
                     <h2>${project.name}</h2>
                     <p>${project.description}</p>
                     <div class="actions">
                         <button onclick="leftSwipe(${project.pid})">Left</button>
                         <button onclick="rightSwipe(${project.pid})">Right</button>
                     </div>
-                </div>`
-            }).join('');
-        }
+                </div>`;
+          })
+          .join("");
+      };
 
-        render();
+      render();
     </script>
-</body>
+  </body>
 </html>
