@@ -5,7 +5,7 @@ import 'auth_provider.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-final String apiUrl = "https://3a99-43-241-145-86.ngrok-free.app";
+const String apiUrl = "https://3a99-43-241-145-86.ngrok-free.app";
 
 void main() {
   runApp(
